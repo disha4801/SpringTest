@@ -9,7 +9,7 @@ import com.example.test.exception.IdNotFoundException;
 import com.example.test.exception.InvalidNameException;
 
 public interface ProductService {
-	public Product createProduct(Product product);
+	public Product createProduct(Product product)throws IdNotFoundException;
 	public Optional<Product> updateProduct(Product product,String Id) throws InvalidNameException;
     public Optional<Product> RetrieveProductById(String productId);
     public Iterable<Product> RetrieveAllProducts();

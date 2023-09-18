@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 	@Override
-	public Product createProduct(Product product) {
+	public Product createProduct(Product product)throws IdNotFoundException {
 		// TODO Auto-generated method stub
 		return productRepository.save(product);
 	}

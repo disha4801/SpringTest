@@ -35,10 +35,20 @@ public class productController {
 
 	@PostMapping("/create")
 
-	public ResponseEntity<?> createProduct(@Valid @RequestBody ProductRequest productRequest) {
-
-		return ResponseEntity.ok(mapper.getProductEntityObject(productRequest));
-
+	public ResponseEntity<?> createProduct(@Valid @RequestBody ProductRequest productRequest)  {
+        
+		Product productRequest2 = mapper.getProductEntityObject(productRequest);
+	
+			try {
+				Product productRequest3 = productService.createProduct(productRequest2);
+				return new ResponseEntity(productRequest3, HttpStatus.CREATED);
+			} catch (IdNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResponseEntity.badRequest().body(e.getMessage());
+			}
+		
+		
 	}
 	
 	 @GetMapping("/{productId}")
